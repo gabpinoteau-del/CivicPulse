@@ -1,10 +1,13 @@
 // Routeur (hash) et coquille commune : en haut le sélecteur Actus/Carte et
-// la barre de localisation, en bas la barre de navigation à 4 onglets.
+// la barre de localisation ; la navigation à 4 onglets est en bas sur mobile
+// et tablette, dans une barre latérale sur ordinateur (tout en CSS).
+// Chaque écran indique sa mise en page (`mise`) : le CSS s'en sert pour
+// choisir la disposition sur grand écran, sans code spécifique par taille.
 import { html, api, annoncer } from './util.js';
 import { RETOUR } from './composants.js';
 import * as E from './ecrans.js';
 
-export const etat = { config: null, moi: null, dernierResultat: null };
+export const etat = { config: null, moi: null, dernierResultat: null, installation: null };
 
 const ROUTES = [
   [/^\/$/, E.accueil],
@@ -64,16 +67,19 @@ async function rendre() {
   try {
     ecran = await route[1](params, ...chemin.match(route[0]).slice(1));
   } catch (e) {
-    ecran = { titre: 'Erreur', haut: 'onglets', contenu: html`<div class="vide"><p>Impossible de charger cette page.</p><p class="meta">${e.message}</p><a class="bouton mt-16" href="#/">Retour à l’accueil</a></div>` };
+    ecran = { titre: 'Erreur', erreur: true, haut: 'onglets', contenu: html`<div class="vide"><h1 class="h-vide">Impossible de charger cette page</h1>${messageErreur(e)}<a class="bouton mt-16" href="#/">Retour à l’accueil</a></div>` };
   }
   if (!ecran || monJeton !== jeton) return;
 
   const ongletBas = ecran.onglet === 'carte' ? 'accueil' : ecran.onglet;
+  const app = document.getElementById('app');
   ecranCourant = ecran;
+  app.dataset.mise = ecran.mise ?? 'lecture';
   afficherHaut();
   main.innerHTML = String(ecran.contenu);
-  document.getElementById('cta').innerHTML = ecran.cta ? `<div class="cta-fixe">${ecran.cta}</div>` : '';
-  document.getElementById('app').classList.toggle('avec-cta', !!ecran.cta);
+  // Le bouton d'action (.cta-fixe) fait partie de l'écran : fixé en bas sur
+  // mobile et tablette, dans la colonne de droite sur ordinateur.
+  app.classList.toggle('avec-cta', !!main.querySelector('.cta-fixe'));
   document.querySelectorAll('.barre-onglets a').forEach((a) => {
     if (a.dataset.onglet === ongletBas) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
@@ -88,11 +94,45 @@ async function rendre() {
   annoncer(ecran.titre);
 }
 
+function messageErreur(e) {
+  return navigator.onLine === false
+    ? html`<p class="meta mt-8">Tu es hors ligne. L’interface reste disponible, mais les données ne peuvent pas être chargées. Elles s’afficheront dès le retour de la connexion.</p>`
+    : html`<p class="meta mt-8">${e.message}</p>`;
+}
+
+// App installable : le navigateur (Chrome, Edge, Android) propose
+// l'installation ; on garde l'événement pour le bouton de l'écran Compte.
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  etat.installation = e;
+  document.dispatchEvent(new Event('installation-change'));
+});
+window.addEventListener('appinstalled', () => {
+  etat.installation = null;
+  document.dispatchEvent(new Event('installation-change'));
+});
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+}
+
+let demarre = false;
 async function demarrer() {
-  [etat.config, etat.moi] = await Promise.all([api('/config'), api('/moi')]);
+  const main = document.getElementById('main');
+  try {
+    [etat.config, etat.moi] = await Promise.all([api('/config'), api('/moi')]);
+  } catch (e) {
+    main.innerHTML = String(html`<div class="vide"><h1 class="h-vide">CivicPulse</h1>${messageErreur(e)}<button type="button" class="bouton mt-16" id="reessayer">Réessayer</button></div>`);
+    main.querySelector('#reessayer').addEventListener('click', demarrer);
+    return;
+  }
+  demarre = true;
   window.addEventListener('hashchange', rendre);
+  // Retour de la connexion : on recharge l'écran s'il n'avait pas pu charger
+  // (jamais un écran en cours de saisie, pour ne pas perdre un avis).
+  window.addEventListener('online', () => ecranCourant?.erreur && rendre());
   // Localisation modifiée dans Compte : on met à jour la barre du haut.
   document.addEventListener('moi-change', () => ecranCourant && afficherHaut());
   rendre();
 }
+window.addEventListener('online', () => { if (!demarre) demarrer(); });
 demarrer();

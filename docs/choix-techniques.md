@@ -11,6 +11,18 @@ Une application web mobile (installable sur l’écran d’accueil), servie par 
 - **Accessible par défaut** : les lecteurs d’écran (VoiceOver, TalkBack) comprennent le HTML nativement.
 - Si besoin plus tard (notifications de vote, par exemple), on peut l’emballer dans une app native (Capacitor) sans tout réécrire.
 
+## Un seul code pour le site et l’app
+
+Les écrans sont écrits une fois (`public/js/ecrans.js`) ; seul le CSS change selon la largeur :
+
+- **mobile** (< 720 px) : navigation au pouce, onglets en bas, bouton d’action fixé en bas ;
+- **tablette** (720 à 1023 px) : plus d’air, grilles sur 2 colonnes ;
+- **ordinateur** (≥ 1024 px) : barre latérale de navigation (plutôt qu’un en-tête : elle garde la hauteur de l’écran pour le contenu, et le sélecteur Actus/Carte et la localisation restent dans l’en-tête de chaque écran), mises en page en colonnes, largeur de lecture limitée à 680 px pour les formulaires.
+
+Chaque écran déclare sa mise en page (`mise`) et le CSS la traduit en grille. Le HTML garde l’ordre de lecture du mobile, qui reste logique sur grand écran : les colonnes latérales sont des blocs d’un seul tenant, placés à droite par la grille. Les grilles de cartes utilisent des requêtes de conteneur : elles passent à 2 ou 3 colonnes selon la place réellement disponible, pas selon la taille de l’écran.
+
+L’app installable repose sur le manifeste (icônes PNG 192 et 512 px) et un service worker « réseau d’abord » : en ligne, on sert toujours la dernière version ; hors ligne, l’interface s’affiche depuis la copie locale. Les données de l’API ne sont jamais mises en cache, pour ne jamais afficher de chiffres périmés.
+
 ## Pourquoi « sans framework »
 
 Le front est en JavaScript standard, le serveur en Node.js sans bibliothèque (seul le SDK Anthropic est optionnel). Pour un MVP d’intérêt public :
@@ -84,7 +96,8 @@ Les poids et seuils sont dans `server/config.js` et `server/scoring.js`. Ce sont
 ## Accessibilité
 
 - Contrastes vérifiés (texte secondaire à 7,6:1, texte noir sur vert à 8,8:1 ; le vert n’est jamais utilisé comme couleur de texte sur fond blanc).
-- Cibles tactiles d’au moins 44 px (testé), navigation au pouce, onglets en bas.
+- Cibles tactiles d’au moins 44 px (testé), navigation au pouce, onglets en bas sur mobile.
+- Sur ordinateur : états de survol, contour de focus visible sur tous les éléments, onglets « Résumé / Texte complet » au clavier (flèches, Début, Fin).
 - Carte doublée d’un **tableau** pour les lecteurs d’écran ; chaque pastille a une description complète (« Bretagne : opinion A en tête, 62 %, 255 avis »).
 - Barres d’opinions : lettres affichées dans les segments (pas d’information portée par la couleur seule) et description textuelle.
 - Un seul titre principal par écran, focus déplacé au changement d’écran, annonces vocales des résultats, lien d’évitement, mode sombre, animations désactivées si l’utilisateur le demande.

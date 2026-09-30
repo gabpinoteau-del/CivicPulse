@@ -52,11 +52,17 @@ p { margin: 0; }
 a { color: inherit; }
 button, input, select, textarea { font: inherit; color: inherit; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+[hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .lien-evitement { position: absolute; left: 8px; top: -60px; z-index: 50; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 8px; }
 .lien-evitement:focus { top: 8px; }
 
-/* ---------- Structure ---------- */
+/* ---------- Structure ----------
+   Trois tailles, un seul HTML :
+   - mobile (< 720 px) : colonne unique, onglets en bas, bouton d'action fixé en bas ;
+   - tablette (720 à 1023 px) : plus d'air, grilles sur 2 colonnes ;
+   - ordinateur (≥ 1024 px) : barre latérale de navigation et mises en page
+     en colonnes, choisies par l'attribut data-mise de .app (voir ecrans.js). */
 .app { max-width: 560px; margin: 0 auto; min-height: 100vh; padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 16px); }
 .app.avec-cta { padding-bottom: calc(var(--tabbar-h) + 92px); }
 main { padding: 0 16px; outline: none; }
@@ -80,6 +86,7 @@ main:focus-visible { outline: none; }
 .barre-onglets a[aria-current="page"] { color: var(--ink); }
 .barre-onglets a[aria-current="page"] svg { stroke-width: 2.4; }
 .barre-onglets a[aria-current="page"]::after { content: ""; width: 20px; height: 3px; border-radius: 3px; background: var(--accent); }
+.marque, .marque-pied { display: none; }
 .barre-onglets svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- Composants ---------- */
@@ -201,13 +208,154 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .option-radio:has(input:checked) { border-color: var(--ink); background: var(--surface); }
 .option-radio input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--ink); }
 .vide { text-align: center; color: var(--ink-2); padding: 32px 0; }
+.vide .h-vide { font-size: 1.2rem; color: var(--ink); }
+.liste-aide { margin: 8px 0 0; padding-left: 20px; }
+.liste-aide li + li { margin-top: 6px; }
 .recherche { margin-top: 16px; }
 .score { font-size: 0.82rem; color: var(--ink-2); margin-top: 6px; }
 
-@media (min-width: 720px) {
-  body { background: var(--surface); }
-  .app { background: var(--bg); box-shadow: var(--shadow); }
-}
 .mt-4 { margin-top: 4px; } .mt-8 { margin-top: 8px; } .mt-12 { margin-top: 12px; } .mt-16 { margin-top: 16px; }
 .metriques.carte { padding: 4px 16px; }
 h1, h2 { text-wrap: balance; }
+
+/* ---------- Focus : le contour suit l'arrondi de chaque composant ---------- */
+.carte:focus-visible { border-radius: var(--radius); outline-offset: 3px; }
+.bouton:focus-visible { border-radius: 12px; }
+.categories a:focus-visible { border-radius: var(--radius-s); }
+.segment a:focus-visible, .choix-opinions button:focus-visible, .bouton-icone:focus-visible { border-radius: 999px; }
+.barre-onglets a:focus-visible { outline-offset: -3px; border-radius: 12px; }
+
+/* ---------- Survol (souris et pavé tactile uniquement) ---------- */
+@media (hover: hover) {
+  .carte-lien { transition: border-color 0.15s, box-shadow 0.15s; }
+  .carte-lien:hover { border-color: var(--ink-2); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 10px 28px rgba(0, 0, 0, 0.1); }
+  .carte-lien:hover h3, .ligne-liste:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
+  .ligne-liste:hover .chevron { color: var(--ink); }
+  .categories a:not([aria-current="true"]):hover { background: var(--line); }
+  .segment a:not([aria-current="page"]):hover { background: var(--bg); }
+  .localisation:hover > span:last-child { text-decoration: underline; text-underline-offset: 3px; }
+  .barre-onglets a:hover { color: var(--ink); }
+  .bouton.secondaire:hover { background: var(--line); opacity: 1; }
+  .bouton.accent:hover { opacity: 0.88; }
+  .lien-bouton:hover { text-decoration-thickness: 2px; }
+  .onglets-texte button:hover { color: var(--ink); }
+  .choix-opinions button:hover { border-color: var(--ink-2); }
+  .option-radio:hover { border-color: var(--ink-2); }
+  .region:hover .nom { color: var(--ink); text-decoration: underline; }
+  .region:hover .rond { box-shadow: 0 0 0 3px var(--line); }
+  .source a:hover { color: var(--ink); }
+  summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+}
+@media (hover: hover) and (min-width: 1024px) {
+  .barre-onglets a:hover { background: var(--surface); }
+}
+@media (prefers-reduced-motion: reduce) { .carte-lien { transition: none; } }
+
+/* ---------- Grilles de cartes : 1, 2 ou 3 colonnes selon la place réelle ----------
+   (requêtes de conteneur : la même liste s'adapte dans le fil de l'accueil,
+   plus étroit, comme dans Explorer, pleine largeur) */
+.conteneur { container-type: inline-size; }
+@container (min-width: 600px) {
+  .grille-cartes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+  .grille-cartes > .carte + .carte { margin-top: 0; }
+}
+@container (min-width: 960px) {
+  .grille-cartes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ---------- Tablette et plus (≥ 720 px) ---------- */
+@media (min-width: 720px) {
+  :root { --gouttiere: 24px; --largeur: 880px; }
+  .app { max-width: none; }
+  /* Largeur de lecture confortable pour les formulaires et les listes. */
+  .app[data-mise="lecture"] { --largeur: 680px; }
+  main { max-width: calc(var(--largeur) + 2 * var(--gouttiere)); margin-inline: auto; padding-inline: var(--gouttiere); }
+  /* Les en-têtes restent pleine largeur (ligne de séparation) mais leur
+     contenu s'aligne sur la colonne de contenu. */
+  .haut, .entete-retour { padding-inline: max(var(--gouttiere), calc((100% - var(--largeur)) / 2)); }
+  .entete-retour { padding-left: max(calc(var(--gouttiere) - 10px), calc((100% - var(--largeur)) / 2 - 10px)); }
+  .haut { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+  .segment { flex: 0 1 320px; }
+  .localisation { margin-top: 0; padding-inline: 8px; }
+
+  h1 { font-size: 1.75rem; }
+  .section { margin-top: 32px; }
+
+  /* Défilement horizontal remplacé par une grille qui passe à la ligne. */
+  .categories { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); overflow: visible; margin: 0; padding: 4px 0 8px; }
+  .choix-opinions { flex-wrap: wrap; overflow: visible; margin: 0; padding: 2px 0 8px; }
+  .onglets-texte { margin: 0 calc(-1 * var(--gouttiere)); padding: 0 var(--gouttiere); gap: 28px; }
+  .feuille { margin: 16px calc(-1 * var(--gouttiere)) 0; padding: 8px var(--gouttiere) 24px; }
+
+  .accueil-vote .carte { padding: 24px; }
+  .accueil-vote h2 { font-size: 1.5rem; }
+  .accueil-vote .bouton { display: inline-flex; width: auto; padding-inline: 28px; }
+
+  /* Carte plus grande. */
+  .carte-france { gap: 14px 8px; padding: 24px 0; }
+  .region .rond { width: 70px; height: 70px; font-size: 1.1rem; }
+  .region .rond small { font-size: 0.8rem; }
+  .region .nom { font-size: 0.8rem; max-width: 110px; }
+  .outremer .region .rond { width: 54px; height: 54px; font-size: 0.9rem; }
+  .carte-principale select, .recherche input { max-width: 480px; }
+
+  .confirmation-tete { padding-top: 40px; }
+  .pile.section { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Ordinateur (≥ 1024 px) ---------- */
+@media (min-width: 1024px) {
+  :root { --gouttiere: 32px; --largeur: 1160px; --nav-l: clamp(200px, 18vw, 248px); --cote: clamp(300px, 32%, 380px); --entete-h: 77px; }
+  .app[data-mise="lecture"] { --largeur: 680px; }
+
+  /* Navigation : barre latérale gauche (logo, 4 onglets). */
+  .barre-onglets { top: 0; right: auto; width: var(--nav-l); display: flex; flex-direction: column; gap: 24px; padding: 20px 16px; border-top: 0; border-right: 1px solid var(--line); overflow-y: auto; }
+  .marque { display: flex; align-items: center; gap: 10px; padding: 4px 12px; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em; }
+  .marque img { width: 32px; height: 32px; }
+  .marque-pied { display: block; margin-top: auto; padding: 0 12px; font-size: 0.8rem; color: var(--ink-2); }
+  .barre-onglets ul { display: flex; flex-direction: column; gap: 4px; max-width: none; margin: 0; }
+  .barre-onglets a { position: relative; flex-direction: row; justify-content: flex-start; gap: 14px; height: 48px; padding: 0 14px; border-radius: 12px; font-size: 1rem; }
+  .barre-onglets a[aria-current="page"] { background: var(--surface); font-weight: 750; }
+  .barre-onglets a[aria-current="page"]::after { position: absolute; left: 0; top: 12px; width: 4px; height: 24px; border-radius: 0 3px 3px 0; }
+
+  .app, .app.avec-cta { margin-left: var(--nav-l); padding-bottom: 64px; }
+  .haut, .entete-retour { min-height: var(--entete-h); }
+  .entete-retour h1 { font-size: 1.3rem; }
+  .segment { flex-basis: 300px; }
+
+  /* Accueil : fil au centre, colonne latérale (Thèmes, Débats, Consensus).
+     La colonne latérale couvre toutes les lignes ; la dernière ligne (1fr)
+     absorbe sa hauteur, sans créer de trou dans le fil. */
+  .app[data-mise="accueil"] main { display: grid; grid-template-columns: minmax(0, 1fr) clamp(260px, 30%, 340px); grid-template-rows: auto auto auto 1fr; column-gap: clamp(24px, 3vw, 40px); align-items: start; }
+  .accueil-vote { grid-column: 1; grid-row: 1; }
+  .accueil-fil { grid-column: 1; grid-row: 2; }
+  .accueil-aide { grid-column: 1; grid-row: 3; }
+  .accueil-cote { grid-column: 2; grid-row: 1 / -1; }
+  .accueil-cote .categories { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .accueil-cote .categories a { flex-direction: row; justify-content: flex-start; gap: 10px; min-height: 48px; padding: 8px 12px; }
+  .accueil-cote .categories .emoji { font-size: 1.3rem; }
+
+  /* Détail : résumé et avis à gauche ; métriques, répartition et bouton
+     d'action à droite, dans une colonne qui reste visible au défilement. */
+  .app[data-mise="detail"] main { display: grid; grid-template-columns: minmax(0, 1fr) var(--cote); grid-template-rows: auto auto auto auto 1fr; column-gap: clamp(28px, 3.5vw, 48px); align-items: start; padding-top: 8px; }
+  .onglets-texte { grid-column: 1; grid-row: 1; margin: 0; padding: 0; }
+  #panneau { grid-column: 1; grid-row: 2; }
+  .detail-avis { grid-column: 1; grid-row: 3; }
+  .detail-score { grid-column: 1; grid-row: 4; }
+  .detail-cote { grid-column: 2; grid-row: 1 / -1; position: sticky; top: calc(var(--entete-h) + 8px); max-height: calc(100vh - var(--entete-h) - 16px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; margin: 0 -8px; padding: 8px 8px 0; }
+  .detail-cote > .section:first-child { margin-top: 16px; }
+  .detail-cote .choix-opinions { padding-bottom: 4px; }
+  .cta-fixe { position: sticky; left: auto; right: auto; bottom: 0; z-index: 1; margin-top: 16px; padding: 16px 0 16px; background: linear-gradient(to top, var(--bg) 78%, transparent); }
+  .cta-fixe .bouton { max-width: none; box-shadow: none; }
+
+  /* Carte : plus grande, détail de la région dans un panneau latéral. */
+  .app[data-mise="carte"] main { display: grid; grid-template-columns: minmax(0, 1fr) var(--cote); column-gap: clamp(24px, 3vw, 40px); align-items: start; }
+  .feuille { position: sticky; top: calc(var(--entete-h) + 24px); margin: 24px 0 0; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  .poignee { display: none; }
+  .carte-france { gap: 18px 8px; padding: 28px 0; }
+  .region .rond { width: clamp(64px, 6vw, 84px); height: clamp(64px, 6vw, 84px); font-size: 1.25rem; }
+  .region .rond small { font-size: 0.85rem; }
+  .region .nom { font-size: 0.85rem; max-width: 130px; }
+  .outremer { gap: 16px; }
+  .outremer .region .rond { width: 60px; height: 60px; font-size: 1rem; }
+}

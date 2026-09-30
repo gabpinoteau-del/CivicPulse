@@ -1,5 +1,8 @@
 // Écrans de l'application. Chaque écran renvoie :
-//   { titre, haut: 'onglets' | { retour, titre }, contenu, cta?, apres?(racine) }
+//   { titre, haut: 'onglets' | { retour, titre }, mise?, contenu, apres?(racine) }
+// `mise` choisit la mise en page sur grand écran (voir app.css) :
+//   'accueil' | 'carte' | 'detail' | 'large' | 'lecture' (par défaut, ~680 px).
+// Le HTML est le même sur toutes les tailles ; seul le CSS change.
 import { html, api, nombre, compact, dateLongue, quandVote, dateRelative, annoncer } from './util.js';
 import { barreOpinions, lettre, avisItem, carteTexte, metriquesCourtes, badgeNiveau, ICONES_CATEGORIE, CHEVRON } from './composants.js';
 import { etat, naviguer } from './app.js';
@@ -13,9 +16,10 @@ export async function accueil() {
     titre: 'Actus',
     haut: 'onglets',
     onglet: 'accueil',
+    mise: 'accueil',
     contenu: html`
       <h1 class="sr-only">Actus : textes de loi en discussion</h1>
-      ${v ? html`<section class="section" aria-labelledby="titre-vote">
+      ${v ? html`<section class="section accueil-vote" aria-labelledby="titre-vote">
         <div class="carte">
           <span class="pastille">🏛 Vote cette semaine</span>
           <h2 id="titre-vote" class="mt-8"><a href="#/texte/${v.id}">${v.titre_court}</a></h2>
@@ -25,6 +29,7 @@ export async function accueil() {
         </div>
       </section>` : ''}
 
+      <div class="accueil-cote">
       <section class="section" aria-labelledby="titre-cat">
         <h2 id="titre-cat">Thèmes</h2>
         <div class="categories">
@@ -49,12 +54,13 @@ export async function accueil() {
           </a>`)}
         </div>
       </section>` : ''}
+      </div>
 
-      ${autresDuFil.length ? html`<section class="section" aria-labelledby="titre-fil">
+      ${autresDuFil.length ? html`<section class="section accueil-fil conteneur" aria-labelledby="titre-fil">
         <h2 id="titre-fil">Dans l’actualité</h2>
-        ${autresDuFil.map(carteTexte)}
+        <div class="grille-cartes">${autresDuFil.map(carteTexte)}</div>
       </section>` : ''}
-      <p class="aide mt-16">Le fil n’affiche que les textes dont le score de pertinence dépasse le seuil ou dont le vote a lieu dans les 7 jours. Tous les textes restent dans Explorer.</p>
+      <p class="aide mt-16 accueil-aide">Le fil n’affiche que les textes dont le score de pertinence dépasse le seuil ou dont le vote a lieu dans les 7 jours. Tous les textes restent dans Explorer.</p>
     `,
   };
 }
@@ -93,8 +99,10 @@ export async function carte(params) {
     titre: 'Carte',
     haut: 'onglets',
     onglet: 'carte',
+    mise: 'carte',
     contenu: html`
       <h1 class="sr-only">Carte des opinions par région</h1>
+      <div class="carte-principale">
       <div class="mt-12">
         <label for="choix-texte">Texte affiché</label>
         <select id="choix-texte">${liste.map((t) => html`<option value="${t.id}" ${t.id === id ? 'selected' : ''}>${t.titre_court}</option>`)}</select>
@@ -108,6 +116,7 @@ export async function carte(params) {
         </table>`
       : html`<div class="carte-france" role="group" aria-label="Régions de France métropolitaine">${metro.map(rond)}</div>
         <div class="outremer" role="group" aria-label="Outre-mer">${outremer.map(rond)}</div>`}
+      </div>
       <section class="feuille" aria-labelledby="titre-feuille">
         <div class="poignee" aria-hidden="true"></div>
         <h2 id="titre-feuille">${d.titre_court}</h2>
@@ -160,11 +169,11 @@ export async function detail(params, id) {
   return {
     titre: t.titre_court,
     haut: { retour: '#/', titre: t.titre_court },
-    cta: html`<a class="bouton" href="#/texte/${t.id}/avis"><span aria-hidden="true">+</span> Ajouter mon avis</a>`,
+    mise: 'detail',
     contenu: html`
       <div class="onglets-texte" role="tablist" aria-label="Contenu du texte">
-        <button type="button" role="tab" id="tab-resume" aria-selected="${onglet === 'resume'}" aria-controls="panneau">Résumé neutre</button>
-        <button type="button" role="tab" id="tab-complet" aria-selected="${onglet === 'complet'}" aria-controls="panneau">Texte complet</button>
+        <button type="button" role="tab" id="tab-resume" aria-selected="${onglet === 'resume'}" tabindex="${onglet === 'resume' ? 0 : -1}" aria-controls="panneau">Résumé neutre</button>
+        <button type="button" role="tab" id="tab-complet" aria-selected="${onglet === 'complet'}" tabindex="${onglet === 'complet' ? 0 : -1}" aria-controls="panneau">Texte complet</button>
       </div>
       <div id="panneau" role="tabpanel" aria-labelledby="tab-${onglet}">
       ${onglet === 'resume' ? html`<section class="section resume">
@@ -186,6 +195,7 @@ export async function detail(params, id) {
         </section>`}
       </div>
 
+      <div class="detail-cote">
       <section class="section" aria-labelledby="titre-metriques">
         <h2 id="titre-metriques">Où en est le texte</h2>
         <ul class="metriques carte">
@@ -211,16 +221,29 @@ export async function detail(params, id) {
           <div class="opinion-detail">${lettre(null)}<p>Autres avis, pas encore regroupés${t.propositions.length ? ` (nouvelle opinion proposée : « ${t.propositions[0].libelle} »)` : ''}</p><span class="pct">${r.autres.pourcentage} %</span></div>
         </div>
       </section>
+      <!-- Fixé en bas de l'écran sur mobile et tablette ; en bas de la colonne de droite sur ordinateur. -->
+      <div class="cta-fixe"><a class="bouton" href="#/texte/${t.id}/avis"><span aria-hidden="true">+</span> Ajouter mon avis</a></div>
+      </div>
 
-      <section class="section" aria-labelledby="titre-avis">
+      <section class="section detail-avis" aria-labelledby="titre-avis">
         <h2 id="titre-avis">Avis</h2>
         <p class="aide">Les personnes directement concernées et les experts apparaissent d’abord (vérifiés, puis déclarés). Tous les avis restent visibles, affichés sans nom.</p>
         <div id="liste-avis" aria-live="polite">${listeAvis(t.avis)}</div>
       </section>
-      <p class="score mt-16">Score de pertinence : ${t.score.total}/100 (activité ${t.score.activite}, intérêt ${t.score.interet}, participation ${t.score.participation}) — ${t.score.raison}</p>`,
+      <p class="score mt-16 detail-score">Score de pertinence : ${t.score.total}/100 (activité ${t.score.activite}, intérêt ${t.score.interet}, participation ${t.score.participation}) — ${t.score.raison}</p>`,
     apres(racine) {
       racine.querySelector('#tab-resume').addEventListener('click', () => naviguer(`#/texte/${t.id}`, { remplacer: true }));
       racine.querySelector('#tab-complet').addEventListener('click', () => naviguer(`#/texte/${t.id}?onglet=complet`, { remplacer: true }));
+      // Onglets au clavier (modèle ARIA) : flèches pour passer d'un onglet à
+      // l'autre, Entrée ou Espace pour l'afficher.
+      racine.querySelector('.onglets-texte').addEventListener('keydown', (e) => {
+        const onglets = [...racine.querySelectorAll('[role="tab"]')];
+        const i = onglets.indexOf(document.activeElement);
+        const cible = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: onglets.length - 1 }[e.key];
+        if (i < 0 || cible === undefined) return;
+        e.preventDefault();
+        onglets[(cible + onglets.length) % onglets.length].focus();
+      });
       const zone = racine.querySelector('#liste-avis');
       async function charger(ajouter) {
         const q = new URLSearchParams({ page });
@@ -380,6 +403,7 @@ export async function explorer(params) {
     titre: 'Explorer',
     haut: 'onglets',
     onglet: 'explorer',
+    mise: 'large',
     contenu: html`
       <h1 class="mt-16">Explorer</h1>
       <p class="meta mt-4">Tous les textes suivis, y compris ceux hors du fil d’actus.</p>
@@ -388,7 +412,7 @@ export async function explorer(params) {
         <a href="#/explorer" aria-current="${!categorie}"><span class="emoji" aria-hidden="true">🗂</span>Tous</a>
         ${config.categories.map((c) => html`<a href="#/explorer?categorie=${c.id}" aria-current="${c.id === categorie}"><span class="emoji" aria-hidden="true">${c.icone}</span>${c.libelle}</a>`)}
       </div>
-      <div id="resultats" class="section">${liste.length ? liste.map(carteTexte) : html`<p class="vide">Aucun texte dans ce thème pour l’instant.</p>`}</div>`,
+      <div id="resultats" class="section conteneur">${liste.length ? html`<div class="grille-cartes">${liste.map(carteTexte)}</div>` : html`<p class="vide">Aucun texte dans ce thème pour l’instant.</p>`}</div>`,
     apres(racine) {
       racine.querySelector('#recherche').addEventListener('input', (e) => {
         const q = e.target.value.toLowerCase();
@@ -439,6 +463,23 @@ export async function compte() {
         <p id="retour-lieu" role="status" class="mt-8"></p>
       </form>
 
+      <section class="section carte" aria-labelledby="titre-installer">
+        <h2 id="titre-installer">Installer l’app</h2>
+        <p class="aide">Installée, CivicPulse s’ouvre comme une application, depuis l’écran d’accueil ou le Dock. L’interface reste disponible hors ligne ; les textes et les avis se chargent dès que tu es connecté·e.</p>
+        <p id="etat-installation" class="mt-8" role="status"></p>
+        <button type="button" class="bouton accent mt-12" id="installer" hidden>Installer CivicPulse</button>
+        <details class="mt-12" id="aide-installation">
+          <summary>Comment l’installer sur mon appareil ?</summary>
+          <ul class="liste-aide">
+            <li><strong>iPhone, iPad (Safari)</strong> : bouton Partager, puis « Sur l’écran d’accueil ».</li>
+            <li><strong>Android (Chrome)</strong> : menu ⋮, puis « Installer l’application » ou « Ajouter à l’écran d’accueil ».</li>
+            <li><strong>Ordinateur (Chrome, Edge)</strong> : icône d’installation à droite de la barre d’adresse, ou menu, puis « Installer CivicPulse ».</li>
+            <li><strong>Mac (Safari)</strong> : menu Fichier, puis « Ajouter au Dock ».</li>
+            <li><strong>Firefox</strong> : l’installation n’est pas proposée sur ordinateur ; le site fonctionne normalement dans le navigateur.</li>
+          </ul>
+        </details>
+      </section>
+
       <section class="section carte" aria-labelledby="titre-badges">
         <h2 id="titre-badges">Mes badges</h2>
         <p class="aide">Déclarés par toi, ou vérifiés : ORCID pour les chercheurs, SIREN pour les entreprises.</p>
@@ -476,6 +517,7 @@ export async function compte() {
         <p class="aide mt-8">MVP : ces flux sont simulés avec des données fictives au format des sources réelles.</p>
       </section>`,
     apres(racine) {
+      brancherInstallation(racine);
       racine.querySelector('#form-lieu').addEventListener('submit', async (e) => {
         e.preventDefault();
         try {
@@ -509,4 +551,35 @@ export async function compte() {
       });
     },
   };
+}
+
+// Bouton « Installer l'app » : affiché seulement quand le navigateur propose
+// l'installation (événement beforeinstallprompt, gardé par app.js) ; sinon,
+// l'explication par appareil reste disponible.
+let ecouteInstallation = null;
+function brancherInstallation(racine) {
+  const bouton = racine.querySelector('#installer');
+  const etatTexte = racine.querySelector('#etat-installation');
+  const maj = () => {
+    if (!racine.contains(bouton)) return;
+    const installee = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+    bouton.hidden = installee || !etat.installation;
+    racine.querySelector('#aide-installation').hidden = installee;
+    etatTexte.textContent = installee ? '✔ Tu utilises l’app installée.' : '';
+    etatTexte.hidden = !installee;
+  };
+  ecouteInstallation?.abort();
+  ecouteInstallation = new AbortController();
+  document.addEventListener('installation-change', maj, { signal: ecouteInstallation.signal });
+  bouton.addEventListener('click', async () => {
+    const invite = etat.installation;
+    if (!invite) return;
+    invite.prompt();
+    const { outcome } = await invite.userChoice;
+    etat.installation = null;
+    maj();
+    etatTexte.hidden = false;
+    etatTexte.textContent = outcome === 'accepted' ? '✔ CivicPulse est installée : retrouve-la avec tes applications.' : 'Installation annulée. Tu pourras la relancer depuis le menu du navigateur.';
+  });
+  maj();
 }

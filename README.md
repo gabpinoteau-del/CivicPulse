@@ -1,6 +1,6 @@
 # CivicPulse (nom provisoire)
 
-Application mobile d’intérêt public : lire le résumé neutre d’un texte de loi en discussion, donner son avis en texte libre, et voir comment les avis se regroupent en opinions (A, B, C…), par région et par profil.
+Application web d’intérêt public, installable sur téléphone (PWA) : lire le résumé neutre d’un texte de loi en discussion, donner son avis en texte libre, et voir comment les avis se regroupent en opinions (A, B, C…), par région et par profil.
 
 **MVP** : une loi complète, le *projet de loi pêche* (données fictives réalistes), plus quatre textes légers pour faire vivre l’accueil, la carte et le score.
 
@@ -23,7 +23,7 @@ Prérequis : Node.js 20 ou plus.
 
 ```bash
 npm install        # optionnel : n'installe que le SDK Anthropic
-npm start          # http://localhost:3000 (ouvrir en affichage mobile)
+npm start          # http://localhost:3000 (mobile, tablette ou ordinateur)
 npm test           # 39 tests unitaires et API
 npm run e2e        # parcours complet dans Chromium + captures dans docs/captures/
 npm run ingest     # lance les connecteurs et affiche le score de chaque texte
@@ -48,6 +48,20 @@ Les données fictives sont datées autour du **30 septembre 2026** (vote au Sén
 | 4. Prompt de classement des avis | [`docs/prompt-classement.md`](docs/prompt-classement.md), code dans `server/ai/` |
 | 5. Choix techniques expliqués | [`docs/choix-techniques.md`](docs/choix-techniques.md) |
 
+## Un seul code : site web et app installable
+
+Les mêmes écrans (`public/js/ecrans.js`) s’adaptent en CSS à trois tailles :
+
+| Taille | Mise en page |
+|---|---|
+| **Mobile** (< 720 px) | Colonne unique, onglets en bas, bouton « Ajouter mon avis » fixé en bas, carte avec feuille coulissante |
+| **Tablette** (720 à 1023 px) | Plus d’air, cartes de textes et thèmes en grille (2 colonnes), onglets en bas |
+| **Ordinateur** (≥ 1024 px) | Navigation dans une barre latérale gauche ; accueil avec colonne latérale (Thèmes, Débats, Consensus) ; détail d’un texte avec métriques, répartition et « Ajouter mon avis » dans une colonne de droite qui reste visible ; carte agrandie avec panneau latéral ; formulaires et listes limités à 680 px de large |
+
+Chaque écran déclare sa mise en page (`mise` : `accueil`, `carte`, `detail`, `large` ou `lecture`) ; `app.js` la pose sur `.app` (`data-mise`) et le CSS fait le reste (media queries, grilles, requêtes de conteneur pour les grilles de cartes).
+
+**App installable** : manifeste avec icônes PNG 192 et 512 px (dont une version « maskable » pour Android) et icône Apple ; service worker (`public/sw.js`) qui garde l’interface disponible hors ligne (stratégie « réseau d’abord », les données de l’API ne sont jamais mises en cache) ; bouton « Installer l’app » dans Compte quand le navigateur le propose, sinon explication par appareil.
+
 ## Organisation du code
 
 ```
@@ -61,7 +75,9 @@ server/
   ai/                   prompt de classement, classifieur (Claude ou local), prompt de résumé
   moderation/           pré-filtre (haine, menaces, données perso) et détection de campagnes
   data/                 contenu éditorial et participation simulée (déterministes)
-public/                 front mobile (HTML, CSS, JS natif, sans framework)
+public/                 front responsive + PWA (HTML, CSS, JS natif, sans framework)
+  sw.js                 service worker (interface hors ligne)
+  icones/               icônes PNG de l’app installable
 tests/                  tests unitaires/API (node:test) et parcours navigateur (tests/e2e)
 db/schema.sql           schéma PostgreSQL de production
 docs/                   diagramme, prompt, choix techniques, captures
@@ -82,6 +98,10 @@ docs/                   diagramme, prompt, choix techniques, captures
 | Campagne coordonnée | 42 faux avis identiques de comptes récents détectés et exclus des pourcentages ; pas de faux positif sur des avis identiques de comptes anciens | ✔ |
 | Modération, RGPD, sécurité | Menace refusée, e-mail/téléphone masqués, export/suppression des données, HTML dans un avis affiché comme du texte, CSP sans erreur | ✔ |
 | Schéma SQL | Exécuté dans un PostgreSQL embarqué (PGlite) : 15 tables créées sans erreur | ✔ |
+
+### Pas encore vérifié
+
+- **Mise en page responsive (tablette, ordinateur) et PWA** : écrites sans passage dans un navigateur. À vérifier : les 3 tailles, la navigation au clavier, l’installation (Chrome/Edge sur ordinateur, Android, iPhone) et le mode hors ligne. Les captures de `docs/captures/` montrent encore l’ancienne version ; `npm run e2e` les régénère.
 
 ### Ce qui reste simulé ou à brancher
 
