@@ -1,0 +1,174 @@
+{
+ "export": {
+  "dossiersLegislatifs": {
+   "dossier": [
+    {
+     "dossierParlementaire": {
+      "uid": "DLR5L17N52110",
+      "legislature": "17",
+      "titreDossier": {
+       "titre": "Projet de loi relatif à la pêche durable et à l’adaptation des quotas de capture",
+       "titreChemin": "peche"
+      },
+      "procedureParlementaire": {
+       "libelle": "Projet de loi ordinaire"
+      },
+      "actesLegislatifs": {
+       "acteLegislatif": [
+        {
+         "codeActe": "AN1-DEPOT",
+         "dateActe": "2026-04-15",
+         "texteAssocie": "PRJLANR5L17B1432"
+        },
+        {
+         "codeActe": "AN1-DEBATS-DEC",
+         "dateActe": "2026-07-08",
+         "voteRefs": {
+          "voteRef": "VTANR5L17V1532"
+         },
+         "statutConclusion": {
+          "libelle": "adopté"
+         }
+        },
+        {
+         "codeActe": "SN1-DEPOT",
+         "dateActe": "2026-07-11"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dossierParlementaire": {
+      "uid": "DLR5L17N51877",
+      "legislature": "17",
+      "titreDossier": {
+       "titre": "Proposition de loi visant à réguler les meublés de tourisme dans les zones tendues",
+       "titreChemin": "logement"
+      },
+      "procedureParlementaire": {
+       "libelle": "Proposition de loi ordinaire"
+      },
+      "actesLegislatifs": {
+       "acteLegislatif": [
+        {
+         "codeActe": "AN1-DEPOT",
+         "dateActe": "2026-02-03",
+         "texteAssocie": "PPLANR5L17B1301"
+        },
+        {
+         "codeActe": "AN1-DEBATS-DEC",
+         "dateActe": "2026-04-16",
+         "voteRefs": {
+          "voteRef": "VTANR5L17V1401"
+         },
+         "statutConclusion": {
+          "libelle": "adopté"
+         }
+        },
+        {
+         "codeActe": "SN1-DEPOT",
+         "dateActe": "2026-04-19"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dossierParlementaire": {
+      "uid": "DLR5L17N52004",
+      "legislature": "17",
+      "titreDossier": {
+       "titre": "Proposition de loi pour garantir l’accès aux soins dans les territoires sous-dotés",
+       "titreChemin": "sante"
+      },
+      "procedureParlementaire": {
+       "libelle": "Proposition de loi ordinaire"
+      },
+      "actesLegislatifs": {
+       "acteLegislatif": [
+        {
+         "codeActe": "AN1-DEPOT",
+         "dateActe": "2026-03-11",
+         "texteAssocie": "PPLANR5L17B1377"
+        },
+        {
+         "codeActe": "AN1-DEBATS-DEC",
+         "dateActe": "2026-06-12",
+         "voteRefs": {
+          "voteRef": "VTANR5L17V1488"
+         },
+         "statutConclusion": {
+          "libelle": "adopté"
+         }
+        },
+        {
+         "codeActe": "SN1-DEPOT",
+         "dateActe": "2026-06-15"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dossierParlementaire": {
+      "uid": "DLR5L17N52188",
+      "legislature": "17",
+      "titreDossier": {
+       "titre": "Projet de loi d’orientation pour la voie professionnelle",
+       "titreChemin": "education"
+      },
+      "procedureParlementaire": {
+       "libelle": "Projet de loi ordinaire"
+      },
+      "actesLegislatifs": {
+       "acteLegislatif": [
+        {
+         "codeActe": "AN1-DEPOT",
+         "dateActe": "2026-07-22",
+         "texteAssocie": "PRJLANR5L17B1455"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dossierParlementaire": {
+      "uid": "DLR5L17N51650",
+      "legislature": "17",
+      "titreDossier": {
+       "titre": "Proposition de loi relative au partage de l’eau pour l’irrigation agricole",
+       "titreChemin": "agriculture"
+      },
+      "procedureParlementaire": {
+       "libelle": "Proposition de loi ordinaire"
+      },
+      "actesLegislatifs": {
+       "acteLegislatif": [
+        {
+         "codeActe": "AN1-DEPOT",
+         "dateActe": "2026-01-14",
+         "texteAssocie": "PPLANR5L17B1190"
+        },
+        {
+         "codeActe": "AN1-DEBATS-DEC",
+         "dateActe": "2026-07-23",
+         "voteRefs": {
+          "voteRef": "VTANR5L17V1510"
+         },
+         "statutConclusion": {
+          "libelle": "adopté"
+         }
+        },
+        {
+         "codeActe": "SN1-DEPOT",
+         "dateActe": "2026-07-26"
+        }
+       ]
+      }
+     }
+    }
+   ]
+  }
+ }
+}

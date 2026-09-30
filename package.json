@@ -1,0 +1,21 @@
+{
+  "name": "civicpulse",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CivicPulse (nom provisoire) : ce que pensent les citoyens des textes de loi en discussion au Parlement — MVP.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test tests/",
+    "e2e": "node tests/e2e/run.mjs",
+    "ingest": "node server/connectors/cli.js",
+    "fixtures": "node scripts/generate-fixtures.js"
+  },
+  "optionalDependencies": {
+    "@anthropic-ai/sdk": "^0.129.0"
+  }
+}

@@ -1,0 +1,776 @@
+{
+ "export": {
+  "scrutins": {
+   "scrutin": [
+    {
+     "scrutin": {
+      "uid": "VTANR5L17V1532",
+      "numero": "1532",
+      "dateScrutin": "2026-07-08",
+      "typeVote": {
+       "libelleTypeVote": "scrutin public solennel"
+      },
+      "sort": {
+       "code": "adopté",
+       "libelle": "l'Assemblée nationale a adopté"
+      },
+      "titre": "l'ensemble du projet de loi relatif à la pêche durable et à l’adaptation des quotas de capture (première lecture)",
+      "objet": {
+       "dossierLegislatif": "DLR5L17N52110"
+      },
+      "syntheseVote": {
+       "nombreVotants": "502",
+       "suffragesExprimes": "492",
+       "decompte": {
+        "pour": "312",
+        "contre": "180",
+        "abstentions": "10",
+        "nonVotants": "0"
+       }
+      },
+      "ventilationVotes": {
+       "organe": {
+        "groupes": {
+         "groupe": [
+          {
+           "organeRef": "PO845401",
+           "libelleAbrege": "RN",
+           "nombreMembresGroupe": "123",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "90",
+             "contre": "46",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845407",
+           "libelleAbrege": "EPR",
+           "nombreMembresGroupe": "92",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "42",
+             "contre": "22",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845413",
+           "libelleAbrege": "LFI-NFP",
+           "nombreMembresGroupe": "71",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "29",
+             "contre": "28",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845419",
+           "libelleAbrege": "SOC",
+           "nombreMembresGroupe": "66",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "32",
+             "contre": "19",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845425",
+           "libelleAbrege": "DR",
+           "nombreMembresGroupe": "47",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "31",
+             "contre": "18",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845431",
+           "libelleAbrege": "EcoS",
+           "nombreMembresGroupe": "38",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "22",
+             "contre": "8",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845437",
+           "libelleAbrege": "Dem",
+           "nombreMembresGroupe": "36",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "16",
+             "contre": "13",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845443",
+           "libelleAbrege": "HOR",
+           "nombreMembresGroupe": "34",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "17",
+             "contre": "14",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845449",
+           "libelleAbrege": "LIOT",
+           "nombreMembresGroupe": "23",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "9",
+             "contre": "6",
+             "abstentions": "0"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845455",
+           "libelleAbrege": "GDR",
+           "nombreMembresGroupe": "17",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "12",
+             "contre": "6",
+             "abstentions": "0"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845461",
+           "libelleAbrege": "UDR",
+           "nombreMembresGroupe": "16",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "7",
+             "contre": "0",
+             "abstentions": "0"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845467",
+           "libelleAbrege": "NI",
+           "nombreMembresGroupe": "8",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "5",
+             "contre": "0",
+             "abstentions": "0"
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "scrutin": {
+      "uid": "VTANR5L17V1401",
+      "numero": "1401",
+      "dateScrutin": "2026-04-16",
+      "typeVote": {
+       "libelleTypeVote": "scrutin public solennel"
+      },
+      "sort": {
+       "code": "adopté",
+       "libelle": "l'Assemblée nationale a adopté"
+      },
+      "titre": "l'ensemble du proposition de loi visant à réguler les meublés de tourisme dans les zones tendues (première lecture)",
+      "objet": {
+       "dossierLegislatif": "DLR5L17N51877"
+      },
+      "syntheseVote": {
+       "nombreVotants": "555",
+       "suffragesExprimes": "530",
+       "decompte": {
+        "pour": "289",
+        "contre": "241",
+        "abstentions": "25",
+        "nonVotants": "0"
+       }
+      },
+      "ventilationVotes": {
+       "organe": {
+        "groupes": {
+         "groupe": [
+          {
+           "organeRef": "PO845401",
+           "libelleAbrege": "RN",
+           "nombreMembresGroupe": "123",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "47",
+             "contre": "39",
+             "abstentions": "5"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845407",
+           "libelleAbrege": "EPR",
+           "nombreMembresGroupe": "92",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "36",
+             "contre": "39",
+             "abstentions": "4"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845413",
+           "libelleAbrege": "LFI-NFP",
+           "nombreMembresGroupe": "71",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "41",
+             "contre": "25",
+             "abstentions": "3"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845419",
+           "libelleAbrege": "SOC",
+           "nombreMembresGroupe": "66",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "21",
+             "contre": "20",
+             "abstentions": "3"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845425",
+           "libelleAbrege": "DR",
+           "nombreMembresGroupe": "47",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "23",
+             "contre": "25",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845431",
+           "libelleAbrege": "EcoS",
+           "nombreMembresGroupe": "38",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "22",
+             "contre": "15",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845437",
+           "libelleAbrege": "Dem",
+           "nombreMembresGroupe": "36",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "22",
+             "contre": "11",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845443",
+           "libelleAbrege": "HOR",
+           "nombreMembresGroupe": "34",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "24",
+             "contre": "9",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845449",
+           "libelleAbrege": "LIOT",
+           "nombreMembresGroupe": "23",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "11",
+             "contre": "8",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845455",
+           "libelleAbrege": "GDR",
+           "nombreMembresGroupe": "17",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "10",
+             "contre": "8",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845461",
+           "libelleAbrege": "UDR",
+           "nombreMembresGroupe": "16",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "7",
+             "contre": "9",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845467",
+           "libelleAbrege": "NI",
+           "nombreMembresGroupe": "8",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "25",
+             "contre": "33",
+             "abstentions": "0"
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "scrutin": {
+      "uid": "VTANR5L17V1488",
+      "numero": "1488",
+      "dateScrutin": "2026-06-12",
+      "typeVote": {
+       "libelleTypeVote": "scrutin public solennel"
+      },
+      "sort": {
+       "code": "adopté",
+       "libelle": "l'Assemblée nationale a adopté"
+      },
+      "titre": "l'ensemble du proposition de loi pour garantir l’accès aux soins dans les territoires sous-dotés (première lecture)",
+      "objet": {
+       "dossierLegislatif": "DLR5L17N52004"
+      },
+      "syntheseVote": {
+       "nombreVotants": "531",
+       "suffragesExprimes": "490",
+       "decompte": {
+        "pour": "402",
+        "contre": "88",
+        "abstentions": "41",
+        "nonVotants": "0"
+       }
+      },
+      "ventilationVotes": {
+       "organe": {
+        "groupes": {
+         "groupe": [
+          {
+           "organeRef": "PO845401",
+           "libelleAbrege": "RN",
+           "nombreMembresGroupe": "123",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "64",
+             "contre": "13",
+             "abstentions": "9"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845407",
+           "libelleAbrege": "EPR",
+           "nombreMembresGroupe": "92",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "78",
+             "contre": "13",
+             "abstentions": "7"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845413",
+           "libelleAbrege": "LFI-NFP",
+           "nombreMembresGroupe": "71",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "65",
+             "contre": "9",
+             "abstentions": "5"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845419",
+           "libelleAbrege": "SOC",
+           "nombreMembresGroupe": "66",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "33",
+             "contre": "8",
+             "abstentions": "5"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845425",
+           "libelleAbrege": "DR",
+           "nombreMembresGroupe": "47",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "20",
+             "contre": "6",
+             "abstentions": "3"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845431",
+           "libelleAbrege": "EcoS",
+           "nombreMembresGroupe": "38",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "37",
+             "contre": "7",
+             "abstentions": "3"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845437",
+           "libelleAbrege": "Dem",
+           "nombreMembresGroupe": "36",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "29",
+             "contre": "7",
+             "abstentions": "3"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845443",
+           "libelleAbrege": "HOR",
+           "nombreMembresGroupe": "34",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "28",
+             "contre": "5",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845449",
+           "libelleAbrege": "LIOT",
+           "nombreMembresGroupe": "23",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "10",
+             "contre": "4",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845455",
+           "libelleAbrege": "GDR",
+           "nombreMembresGroupe": "17",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "14",
+             "contre": "3",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845461",
+           "libelleAbrege": "UDR",
+           "nombreMembresGroupe": "16",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "11",
+             "contre": "3",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845467",
+           "libelleAbrege": "NI",
+           "nombreMembresGroupe": "8",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "13",
+             "contre": "10",
+             "abstentions": "0"
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    },
+    {
+     "scrutin": {
+      "uid": "VTANR5L17V1510",
+      "numero": "1510",
+      "dateScrutin": "2026-07-23",
+      "typeVote": {
+       "libelleTypeVote": "scrutin public solennel"
+      },
+      "sort": {
+       "code": "adopté",
+       "libelle": "l'Assemblée nationale a adopté"
+      },
+      "titre": "l'ensemble du proposition de loi relative au partage de l’eau pour l’irrigation agricole (première lecture)",
+      "objet": {
+       "dossierLegislatif": "DLR5L17N51650"
+      },
+      "syntheseVote": {
+       "nombreVotants": "530",
+       "suffragesExprimes": "500",
+       "decompte": {
+        "pour": "270",
+        "contre": "230",
+        "abstentions": "30",
+        "nonVotants": "0"
+       }
+      },
+      "ventilationVotes": {
+       "organe": {
+        "groupes": {
+         "groupe": [
+          {
+           "organeRef": "PO845401",
+           "libelleAbrege": "RN",
+           "nombreMembresGroupe": "123",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "43",
+             "contre": "44",
+             "abstentions": "6"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845407",
+           "libelleAbrege": "EPR",
+           "nombreMembresGroupe": "92",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "57",
+             "contre": "33",
+             "abstentions": "5"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845413",
+           "libelleAbrege": "LFI-NFP",
+           "nombreMembresGroupe": "71",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "32",
+             "contre": "22",
+             "abstentions": "4"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845419",
+           "libelleAbrege": "SOC",
+           "nombreMembresGroupe": "66",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "24",
+             "contre": "24",
+             "abstentions": "3"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845425",
+           "libelleAbrege": "DR",
+           "nombreMembresGroupe": "47",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "26",
+             "contre": "18",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845431",
+           "libelleAbrege": "EcoS",
+           "nombreMembresGroupe": "38",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "18",
+             "contre": "21",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845437",
+           "libelleAbrege": "Dem",
+           "nombreMembresGroupe": "36",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "16",
+             "contre": "19",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845443",
+           "libelleAbrege": "HOR",
+           "nombreMembresGroupe": "34",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "17",
+             "contre": "13",
+             "abstentions": "2"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845449",
+           "libelleAbrege": "LIOT",
+           "nombreMembresGroupe": "23",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "13",
+             "contre": "7",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845455",
+           "libelleAbrege": "GDR",
+           "nombreMembresGroupe": "17",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "10",
+             "contre": "6",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845461",
+           "libelleAbrege": "UDR",
+           "nombreMembresGroupe": "16",
+           "vote": {
+            "positionMajoritaire": "pour",
+            "decompteVoix": {
+             "pour": "7",
+             "contre": "6",
+             "abstentions": "1"
+            }
+           }
+          },
+          {
+           "organeRef": "PO845467",
+           "libelleAbrege": "NI",
+           "nombreMembresGroupe": "8",
+           "vote": {
+            "positionMajoritaire": "contre",
+            "decompteVoix": {
+             "pour": "7",
+             "contre": "17",
+             "abstentions": "1"
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    }
+   ]
+  }
+ }
+}

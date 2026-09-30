@@ -1,0 +1,32 @@
+{
+ "derniere_mise_a_jour": "2026-09-28",
+ "petitions": [
+  {
+   "id": "i-2291",
+   "titre": "Non à une nouvelle baisse des quotas pour la petite pêche côtière",
+   "date_depot": "2026-05-02",
+   "etat": "En cours d’examen",
+   "commission": "Commission des affaires économiques",
+   "nombre_signatures": 120431,
+   "url": "https://petitions.assemblee-nationale.fr/initiatives/i-2291"
+  },
+  {
+   "id": "i-2104",
+   "titre": "Pour un médecin traitant accessible partout",
+   "date_depot": "2026-01-20",
+   "etat": "Classée",
+   "commission": "Commission des affaires sociales",
+   "nombre_signatures": 48210,
+   "url": "https://petitions.assemblee-nationale.fr/initiatives/i-2104"
+  },
+  {
+   "id": "i-2310",
+   "titre": "Pour la gratuité des transports scolaires",
+   "date_depot": "2026-06-01",
+   "etat": "En cours d’examen",
+   "commission": "Commission des affaires culturelles",
+   "nombre_signatures": 8120,
+   "url": "https://petitions.assemblee-nationale.fr/initiatives/i-2310"
+  }
+ ]
+}

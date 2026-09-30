@@ -1,0 +1,535 @@
+{
+ "items": [
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080200",
+   "access": "all-access",
+   "agent": "user",
+   "views": 603
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080300",
+   "access": "all-access",
+   "agent": "user",
+   "views": 471
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080400",
+   "access": "all-access",
+   "agent": "user",
+   "views": 551
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080500",
+   "access": "all-access",
+   "agent": "user",
+   "views": 558
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080600",
+   "access": "all-access",
+   "agent": "user",
+   "views": 528
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080700",
+   "access": "all-access",
+   "agent": "user",
+   "views": 578
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080800",
+   "access": "all-access",
+   "agent": "user",
+   "views": 544
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026080900",
+   "access": "all-access",
+   "agent": "user",
+   "views": 467
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081000",
+   "access": "all-access",
+   "agent": "user",
+   "views": 492
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081100",
+   "access": "all-access",
+   "agent": "user",
+   "views": 490
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081200",
+   "access": "all-access",
+   "agent": "user",
+   "views": 507
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081300",
+   "access": "all-access",
+   "agent": "user",
+   "views": 472
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081400",
+   "access": "all-access",
+   "agent": "user",
+   "views": 588
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081500",
+   "access": "all-access",
+   "agent": "user",
+   "views": 477
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081600",
+   "access": "all-access",
+   "agent": "user",
+   "views": 568
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081700",
+   "access": "all-access",
+   "agent": "user",
+   "views": 511
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081800",
+   "access": "all-access",
+   "agent": "user",
+   "views": 569
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026081900",
+   "access": "all-access",
+   "agent": "user",
+   "views": 577
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082000",
+   "access": "all-access",
+   "agent": "user",
+   "views": 582
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082100",
+   "access": "all-access",
+   "agent": "user",
+   "views": 563
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082200",
+   "access": "all-access",
+   "agent": "user",
+   "views": 561
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082300",
+   "access": "all-access",
+   "agent": "user",
+   "views": 511
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082400",
+   "access": "all-access",
+   "agent": "user",
+   "views": 515
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082500",
+   "access": "all-access",
+   "agent": "user",
+   "views": 579
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082600",
+   "access": "all-access",
+   "agent": "user",
+   "views": 562
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082700",
+   "access": "all-access",
+   "agent": "user",
+   "views": 557
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082800",
+   "access": "all-access",
+   "agent": "user",
+   "views": 615
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026082900",
+   "access": "all-access",
+   "agent": "user",
+   "views": 578
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026083000",
+   "access": "all-access",
+   "agent": "user",
+   "views": 459
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026083100",
+   "access": "all-access",
+   "agent": "user",
+   "views": 537
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090100",
+   "access": "all-access",
+   "agent": "user",
+   "views": 557
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090200",
+   "access": "all-access",
+   "agent": "user",
+   "views": 464
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090300",
+   "access": "all-access",
+   "agent": "user",
+   "views": 477
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090400",
+   "access": "all-access",
+   "agent": "user",
+   "views": 620
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090500",
+   "access": "all-access",
+   "agent": "user",
+   "views": 506
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090600",
+   "access": "all-access",
+   "agent": "user",
+   "views": 512
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090700",
+   "access": "all-access",
+   "agent": "user",
+   "views": 579
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090800",
+   "access": "all-access",
+   "agent": "user",
+   "views": 596
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026090900",
+   "access": "all-access",
+   "agent": "user",
+   "views": 564
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091000",
+   "access": "all-access",
+   "agent": "user",
+   "views": 605
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091100",
+   "access": "all-access",
+   "agent": "user",
+   "views": 514
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091200",
+   "access": "all-access",
+   "agent": "user",
+   "views": 619
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091300",
+   "access": "all-access",
+   "agent": "user",
+   "views": 600
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091400",
+   "access": "all-access",
+   "agent": "user",
+   "views": 513
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091500",
+   "access": "all-access",
+   "agent": "user",
+   "views": 575
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091600",
+   "access": "all-access",
+   "agent": "user",
+   "views": 546
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091700",
+   "access": "all-access",
+   "agent": "user",
+   "views": 543
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091800",
+   "access": "all-access",
+   "agent": "user",
+   "views": 527
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026091900",
+   "access": "all-access",
+   "agent": "user",
+   "views": 600
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092000",
+   "access": "all-access",
+   "agent": "user",
+   "views": 580
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092100",
+   "access": "all-access",
+   "agent": "user",
+   "views": 538
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092200",
+   "access": "all-access",
+   "agent": "user",
+   "views": 519
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092300",
+   "access": "all-access",
+   "agent": "user",
+   "views": 739
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092400",
+   "access": "all-access",
+   "agent": "user",
+   "views": 643
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092500",
+   "access": "all-access",
+   "agent": "user",
+   "views": 721
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092600",
+   "access": "all-access",
+   "agent": "user",
+   "views": 659
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092700",
+   "access": "all-access",
+   "agent": "user",
+   "views": 683
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092800",
+   "access": "all-access",
+   "agent": "user",
+   "views": 729
+  },
+  {
+   "project": "fr.wikipedia",
+   "article": "Désert_médical_en_France",
+   "granularity": "daily",
+   "timestamp": "2026092900",
+   "access": "all-access",
+   "agent": "user",
+   "views": 598
+  }
+ ]
+}
