@@ -8,6 +8,15 @@ Application mobile d’intérêt public : lire le résumé neutre d’un texte d
 |---|---|---|---|
 | ![Accueil](docs/captures/1-accueil.png) | ![Carte](docs/captures/2-carte.png) | ![Détail](docs/captures/3-detail.png) | ![Confirmation](docs/captures/5-confirmation.png) |
 
+## Tester sans rien installer
+
+[![Ouvrir dans GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/gabpinoteau-del/CivicPulse?ref=claude/civicpulse-mobile-app-m3fo40)
+
+1. Cliquer sur le bouton ci-dessus, puis sur **Create codespace**.
+2. Attendre 1 à 2 minutes : l’app démarre toute seule et s’ouvre dans un nouvel onglet (sinon : onglet **Ports**, ligne 3000, icône globe).
+3. Pour l’ouvrir sur un téléphone : onglet **Ports**, clic droit sur 3000, **Port Visibility**, **Public**, puis ouvrir l’adresse sur le téléphone.
+4. Après le test : menu ☰ → **Codespaces** → **Stop Current Codespace** (le quota gratuit est d’environ 60 h par mois).
+
 ## Lancer le projet
 
 Prérequis : Node.js 20 ou plus.
