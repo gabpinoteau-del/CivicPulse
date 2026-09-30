@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
-    "test": "node --test tests/",
+    "test": "node --test tests/*.test.js",
     "e2e": "node tests/e2e/run.mjs",
     "ingest": "node server/connectors/cli.js",
     "fixtures": "node scripts/generate-fixtures.js"

@@ -65,14 +65,14 @@ export async function creerStore({ maintenant = maintenantParDefaut(), ingestion
       const k = a.opinion_code ?? 'autres';
       parCode[k] = (parCode[k] ?? 0) + 1;
     }
-    const pct = (n) => (total ? Math.round((100 * n) / total) : 0);
-    const opinions = t.opinions
-      .filter((o) => o.statut === 'active')
-      .map((o) => ({ code: o.code, libelle: o.libelle, nombre: parCode[o.code] ?? 0, pourcentage: pct(parCode[o.code] ?? 0) }));
+    const actives = t.opinions.filter((o) => o.statut === 'active');
+    const nombres = [...actives.map((o) => parCode[o.code] ?? 0), parCode.autres ?? 0];
+    const pct = pourcentages(nombres);
+    const opinions = actives.map((o, i) => ({ code: o.code, libelle: o.libelle, nombre: nombres[i], pourcentage: pct[i] }));
     return {
       total,
       opinions,
-      autres: { nombre: parCode.autres ?? 0, pourcentage: pct(parCode.autres ?? 0) },
+      autres: { nombre: nombres.at(-1), pourcentage: pct.at(-1) },
       en_revue: liste.filter((a) => a.statut === 'en_revue').length,
     };
   }
@@ -137,9 +137,9 @@ export async function creerStore({ maintenant = maintenantParDefaut(), ingestion
   // Métriques affichées sur la fiche, chacune avec sa source officielle.
   function metriquesAffichees(t) {
     const m = metriquesDe(t.ref_an);
-    const src = (x) => ({ source: x.source_libelle, url: x.source_url, date: x.date_mesure });
+    const src = (x) => ({ source: x.source_libelle, url: x.source_url, date: x.recupere_le });
     const out = [];
-    const ligneSenat = { source: 'Sénat — Dosleg', url: t.url_senat, date: null };
+    const ligneSenat = { source: 'Sénat — Dosleg', url: t.url_senat, date: metriques[0]?.recupere_le ?? null };
     if (t.stade) out.push({ cle: 'stade', libelle: 'Stade', valeur: t.stade, ...(t.url_senat ? ligneSenat : { source: 'Assemblée nationale — open data', url: t.url_an }) });
     if (m.seance) out.push({ cle: 'prochain_vote', libelle: 'Prochain vote', valeur: m.seance.valeur, type: 'date', ...src(m.seance) });
     if (m.scrutinAN) {
@@ -200,7 +200,10 @@ export async function creerStore({ maintenant = maintenantParDefaut(), ingestion
       const n = ici.length;
       const parCode = {};
       for (const a of ici) parCode[a.opinion_code ?? 'autres'] = (parCode[a.opinion_code ?? 'autres'] ?? 0) + 1;
-      const ops = t.opinions.filter((o) => o.statut === 'active').map((o) => ({ code: o.code, nombre: parCode[o.code] ?? 0, pourcentage: n ? Math.round((100 * (parCode[o.code] ?? 0)) / n) : 0 }));
+      const actives = t.opinions.filter((o) => o.statut === 'active');
+      const nombres = [...actives.map((o) => parCode[o.code] ?? 0), parCode.autres ?? 0];
+      const pct = pourcentages(nombres);
+      const ops = actives.map((o, i) => ({ code: o.code, nombre: nombres[i], pourcentage: pct[i] }));
       const suffisant = n >= SEUIL_AVIS_REGION;
       const dom = [...ops].sort((a, b) => b.nombre - a.nombre)[0];
       return {
@@ -214,7 +217,7 @@ export async function creerStore({ maintenant = maintenantParDefaut(), ingestion
         // Sous le seuil : on n'affiche AUCUN pourcentage (fiabilité).
         dominante: suffisant ? { code: dom.code, pourcentage: dom.pourcentage } : null,
         opinions: suffisant ? ops : null,
-        autres: suffisant ? Math.round((100 * (parCode.autres ?? 0)) / n) : null,
+        autres: suffisant ? pct.at(-1) : null,
       };
     });
   }
@@ -454,6 +457,17 @@ export async function creerStore({ maintenant = maintenantParDefaut(), ingestion
   }
 
   return api;
+}
+
+// Pourcentages entiers dont la somme fait exactement 100 (plus fort reste).
+export function pourcentages(nombres) {
+  const total = nombres.reduce((a, b) => a + b, 0);
+  if (!total) return nombres.map(() => 0);
+  const bruts = nombres.map((n) => (100 * n) / total);
+  const res = bruts.map(Math.floor);
+  let reste = 100 - res.reduce((a, b) => a + b, 0);
+  bruts.map((b, i) => [b - Math.floor(b), i]).sort((x, y) => y[0] - x[0]).forEach(([, i]) => { if (reste-- > 0) res[i]++; });
+  return res;
 }
 
 export function erreur(status, message) {
